@@ -35,7 +35,7 @@ integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChi
                     window.location.href = "response.php";
                 }
             </script>
-                <li><a href="#">Login</a></li>
+                
 
             </ul>
             <img src="image/logo.png" alt="">
