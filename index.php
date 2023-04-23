@@ -32,7 +32,7 @@ integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChi
                  <li><a href="#"class="btn btn-rounded" onclick="redirectFeedbackPage()">Send us Feedback</a></li>
                  <script type="text/javascript">
                 function redirectFeedbackPage() {
-                    window.location.href = "phpEmail-main/index.html";
+                    window.location.href = "response.php";
                 }
             </script>
                 <li><a href="#">Login</a></li>
