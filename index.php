@@ -57,7 +57,7 @@ integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChi
                     JAMCRIS TRADING 
                 </h1>
                 
-                <p>Your one stop auto shop.</p>
+                <p>Your one stop auto tite.</p>
                 
                
             </div>
