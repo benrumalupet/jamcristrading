@@ -18,8 +18,8 @@ if(isset($_POST["send"])){
     </head>
     <body>
         <p> Greetings <strong> '.$name.'! </strong></p>
-        <p>Thank you for your feedback, this is truly noted by our crew
-           We appreciate your input and will use it to improve our services, Thanks '.$name.'!</p>
+        <p>Thank you for your feedback, this is truly noted by our crew.
+        <br>We appreciate your input and will use it to improve our services, Thanks '.$name.'!</p>
         <br><br>
         Have a great day ahead!,<br>
         From JamCris Trading Fam!<br>
