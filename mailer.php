@@ -32,12 +32,12 @@ if(isset($_POST["send"])){
     $mail->isSMTP();
     $mail->Host = "smtp.gmail.com";
     $mail->SMTPAuth = "true";
-    $mail->Username = "sorrowblade12@gmail.com";
-    $mail->Password = "pzauijjiqcgwdkrv";
+    $mail->Username = "jamcristrading@gmail.com";
+    $mail->Password = "yirzelwfndfbhhrb";
     $mail->SMTPSecure = "ssl";
     $mail->Port = "465";
 
-    $mail->setFrom("sorrowblade12@gmail.com","JamCris Trading");
+    $mail->setFrom("jamcristrading@gmail.com","JamCris Trading");
 
     $mail->addAddress($email); // change to my email
     $mail->isHTML(true);
