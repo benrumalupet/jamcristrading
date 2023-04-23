@@ -23,7 +23,7 @@ if(isset($_POST["send"])){
         <br><br>
         Have a great day ahead!,<br>
         From JamCris Trading Fam!<br>
-        <strong></b> JamCris Trading ♥</strong>
+        <strong></b> JamCris Trading 🚗♥</strong>
 
     </body>
     </html>';
