@@ -6,17 +6,17 @@
   font-family: 'Poppins', sans-serif;
 }
 .about-us{
-  height: 100vh;
+  height: 50vh;
   width: 100%;
   padding: 90px 0;
-  background: #ddd;
+  background: #ffffff;
 }
 .pic{
-  height: auto;
-  width:  302px;
+  height: 350px;
+  width:  420px;
 }
 .about{
-  width: 1130px;
+  width: 1120px;
   max-width: 85%;
   margin: 0 auto;
   display: flex;
@@ -25,6 +25,7 @@
 }
 .text{
   width: 540px;
+  
 }
 .text h2{
   font-size: 90px;
@@ -48,37 +49,12 @@ span{
 .data{
   margin-top: 30px;
 }
-.hire{
-  font-size: 18px;
-  background: #4070f4;
-  color: #fff;
-  text-decoration: none;
-  border: none;
-  padding: 8px 25px;
-  border-radius: 6px;
-  transition: 0.5s;
-}
-.hire:hover{
-  background: #000;
-  border: 1px solid #4070f4;
-}
-.logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
 
-.logo img {
-  max-width: 80%;
-  max-height: 80%;
-}
 .mission-vision {
+  width: 1600px;
+  max-width: 100%;
   margin-top: 50px;
+  align-items: center;
 }
 
 .mission-vision h3 {
@@ -88,4 +64,16 @@ span{
 
 .mission-vision p {
   margin-bottom: 10px;
+}
+.back-button {
+  background-color: #3186e1; /* Set background color */
+  color: white; /* Set text color */
+  border: 2px solid #3186e1; /* Set border style */
+  padding: 5px 45px; /* Set padding */
+  text-decoration: none; /* Remove underline */
+  border-radius: 5px; /* Set border radius */
+}
+
+.back-button:hover {
+  background-color: #3186e1; /* Change background color on hover */
 }
