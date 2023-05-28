@@ -9,8 +9,6 @@ require 'phpmailer/src/SMTP.php';
 if(isset($_POST["send"])){
     $email = $_POST["email"];
     $name = $_POST["name"];
-    $subject = $_POST["subject"];
-
     $message ='<!DOCTYPE html>
     <html lang="en"> 
     <head>
@@ -34,19 +32,17 @@ if(isset($_POST["send"])){
     $mail->Host = "smtp.gmail.com";
     $mail->SMTPAuth = "true";
     $mail->Username = "jamcristrading@gmail.com";
-    $mail->Password = "yirzelwfndfbhhrb";
+    $mail->Password = "fcmghsauxldifhaw";
     $mail->SMTPSecure = "ssl";
     $mail->Port = "465";
 
     $mail->setFrom("jamcristrading@gmail.com","JamCris Trading");
-
     $mail->addAddress($email); // change to my email
     $mail->isHTML(true);
-
-    $mail->Subject = $subject;
+    $mail->Subject = 'Inquiry/Feedback';
     $mail->Body = $message;
 
     $mail->send();
-    header('location:index.php');
+    header("Location: response.php");
 }
 ?>

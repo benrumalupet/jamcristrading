@@ -3,17 +3,29 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  padding-bottom: 50px;
   font-family: 'Poppins', sans-serif;
 }
+
 .about-us{
   height: 50vh;
+  margin-top: 10px;
   width: 100%;
-  padding: 90px 0;
-  background: #ffffff;
+  padding: 20px 0;
+  padding-bottom: 100px;
 }
+
 .pic{
   height: 350px;
   width:  420px;
+}
+
+h2.logo-text{
+  font-family: 'Poppins', sans-serif;
+  font-size: 1888px;
+  top: 20px;
+  left: 30px;
+  z-index: 2;
 }
 .about{
   width: 1120px;
@@ -28,9 +40,11 @@
   
 }
 .text h2{
-  font-size: 90px;
+  margin-top: 50px;
+  font-size: 50px;
   font-weight: 600;
   margin-bottom: 10px;
+  display: flex;
 
 }
 .text h5{
@@ -49,31 +63,23 @@ span{
 .data{
   margin-top: 30px;
 }
-
 .mission-vision {
-  width: 1600px;
+  width: 80%;
   max-width: 100%;
   margin-top: 50px;
   align-items: center;
+  justify-content: space-around;
+  margin-left: 150px;
+  text-align: center; /* Add this line */
 }
 
+
 .mission-vision h3 {
-  font-size: 1.5rem;
+  font-size: 32px;
   margin-bottom: 10px;
+
 }
 
 .mission-vision p {
   margin-bottom: 10px;
-}
-.back-button {
-  background-color: #3186e1; /* Set background color */
-  color: white; /* Set text color */
-  border: 2px solid #3186e1; /* Set border style */
-  padding: 5px 45px; /* Set padding */
-  text-decoration: none; /* Remove underline */
-  border-radius: 5px; /* Set border radius */
-}
-
-.back-button:hover {
-  background-color: #3186e1; /* Change background color on hover */
 }

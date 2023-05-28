@@ -34,7 +34,7 @@ nav ul li{
 nav ul a{
     text-decoration: none;
     padding: 0.3rem 1.3rem;
-    font-size: 17px;
+    font-size: 20px;
     font-weight: bold;
     color: #161515;
     position: relative;
@@ -103,7 +103,7 @@ nav ul a:hover:after{
 }
 .right{
     position: absolute;
-    right: 8%;
+    right: 5%;
     bottom: 20%;
 }
 .box{
@@ -117,8 +117,8 @@ nav ul a:hover:after{
     
     margin: 0 auto;
     border-radius: 50%;
-  width: 350px;
-  height: 350px;
+  width: 300px;
+  height: 300px;
   top: 50%;
     left:10%;
 transform: translate(-50%, -50%);
