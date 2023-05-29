@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="service.css">
 
     <title>Our Services</title>
+    <link rel="icon" type="image/png" href = "about/logo.png">
 </head>
  <?php
 include 'sample-nav.html';
