@@ -23,12 +23,21 @@ body .container {
 .card {
   background-color: #ffffff !important;
   border: 1px solid rgb(169, 163, 163) !important; 
+  max-width: 100%;
 }
 
+.card img {
+  max-width: 100%;
+  height: auto;
+}
+.card-body {
+  height: 200px; /* Adjust the height as per your preference */
+  overflow: hidden;
+}
 
 #filter-buttons button {
   border-radius: 3px;
-  background: #f1ebeb;
+  background: #cfd9dc;
   border-color: transparent;
 }
 

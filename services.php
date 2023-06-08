@@ -40,10 +40,9 @@ include 'sample-nav.html';
                             thriving industrial market. With our extensive network and expertise, we connect businesses
                             and individuals with top-notch machinery at competitive prices.
                         </p>
-                        <a href="#" class="btn btn-primary">View Details</a>
+                        <a href="services/import.php" class="btn btn-primary">View Photos</a>
                     </div>
-                </div>
-                <!-- card ends here -->
+                </div> 
             </div>
             <!-- col ends here -->
 
@@ -85,24 +84,7 @@ include 'sample-nav.html';
                 </div>
                 <!-- card ends here -->
             </div>
-            <!-- col ends here -->
-            <!-- <div class="col-12 col-sm-6 col-md-3 m-auto"> -->
-            <!-- card starts here
-                <div class="card shadow">
-                    <img src="images/seo.svg" alt="" class="card-img-top">
-                    <div class="card-body">
-                        <h3 class="text-center">Email Marketing</h3>
-                        <hr class="mx-auto w-75">
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut eligendi soluta est veniam sequi
-                            nemo, quas delectus eveniet ducimus rem animi. Natus non earum deleniti aliquam
-                        </p>
-                    </div>
-                </div>
-                 card ends here -->
-            <!-- </div> -->
-            <!-- col ends here -->
-            <!-- </div> -->
+          
         </div>
 
 
