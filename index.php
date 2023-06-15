@@ -9,11 +9,11 @@
   <link rel="icon" type="image/png" href = "about/logo.png">
   <link rel="stylesheet" href="sample-style.css" />
 </head>
+
+<body>
 <?php
       include 'sample-nav.html';
       ?>
-<body>
-
   <main>
   
     <div class="big-wrapper light">

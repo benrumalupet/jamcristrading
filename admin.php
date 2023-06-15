@@ -1,16 +1,14 @@
 <?php
-include 'connection.php';
 
-$conn = openConnection(); // Open the database connection
-if ($_SERVER['REQUEST_URI'] === 'http://localhost/jamcristrading/admin.php') {
-    // Display a warning message
-    echo '<p>Access to this page is restricted.</p>';
-    echo '<p>Please contact the administrator for further assistance.</p>';
-    // You can also consider logging the unauthorized access attempts for security purposes
-    
-    // You can choose to exit the script here to prevent further execution
-    exit;
+include 'connection.php';
+session_start();
+
+// Check if the user is not logged in or not an admin
+if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+    header("Location: login.php"); // Redirect to the login page
+    exit();
 }
+$conn = openConnection();
 // Query to count the total number of products
 $sql = "SELECT COUNT(*) as total FROM products";
 $result = mysqli_query($conn, $sql);
@@ -597,10 +595,14 @@ closeConnection($conn); // Close the database connection
                         <i class="uil uil-phone"></i>
                         <span class="link-name">Contacts</span>
                     </a></li>
+                    <li><a href="edit-about.php">
+                        <i class="uil uil-pen"></i>
+                        <span class="link-name">About</span>
+                    </a></li>
             </ul>
             </ul>
 
-            <br><br><br><br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br><br><br>
 
             <ul class="logout-mode">
                 <li>

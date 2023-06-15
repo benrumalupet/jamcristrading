@@ -17,12 +17,12 @@
     <title>Our Services</title>
     <link rel="icon" type="image/png" href = "about/logo.png">
 </head>
- <?php
-include 'sample-nav.html';
-?>   
+
 
 <body>
-
+<?php
+include 'sample-nav.html';
+?>   
     <div class="container-fluid">
         
         <h1 class="text-center mt-5 display-3 fw-bold">Our <span class="theme-text">Services</span></h1>
@@ -59,7 +59,7 @@ include 'sample-nav.html';
                             guarantee exceptional results that will make your car look as good as new.
                             Trust us to revitalize your vehicle's aesthetics and restore its pristine condition.
                         </p>
-                        <a href="#" class="btn btn-primary">View Details</a>
+                        <a href="services/repair.php" class="btn btn-primary">View Details</a>
                     </div>
                 </div>
                 <!-- card ends here -->

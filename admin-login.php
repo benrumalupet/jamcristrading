@@ -30,6 +30,7 @@ if ($result->num_rows === 1) {
     // header("Location: admin.php?login=success"); // Change "admin.php" to your desired destination
     echo "<script>alert('Login Sucessful')</script>";
     echo "<script>window.location.href='admin.php';</script>";
+  
     exit();
 } else {
     // Login failed

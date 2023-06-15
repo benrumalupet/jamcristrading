@@ -96,6 +96,16 @@ if (isset($_POST['add_product'])) {
          cursor: pointer;
          color: white;
       }
+
+      .btn-cancel {
+         background-color: red;
+      }
+
+      .table-container {
+         overflow-y: scroll;
+         max-height: 400px;
+         /* Adjust this value as needed */
+      }
    </style>
 </head>
 
@@ -136,52 +146,54 @@ if (isset($_POST['add_product'])) {
       </section>
 
       <section class="display-product-table">
-         <table>
-            <thead>
-               <th>Product image</th>
-               <th>Product name</th>
-               <th>Product price</th>
-               <th>Product description</th>
-               <th>Product category</th>
-               <th>Action</th>
-            </thead>
-            <tbody>
-               <?php
-               $select_products = mysqli_query($conn, "SELECT * FROM `products`");
-               if (mysqli_num_rows($select_products) > 0) {
-                  while ($row = mysqli_fetch_assoc($select_products)) {
-                     ?>
-                     <tr>
-                        <!-- Display product table data -->
-                        <td><img src="uploaded_img/<?php echo $row['image']; ?>" height="100" alt=""></td>
-                        <td>
-                           <?php echo $row['name']; ?>
-                        </td>
-                        <td>₱
-                           <?php echo $row['price']; ?>
-                        </td>
-                        <td>
-                           <?php echo $row['description']; ?>
-                        </td>
-                        <td>
-                           <?php echo $row['category']; ?>
-                        </td>
-                        <td>
-                           <a href="add-product.php?delete=<?php echo $row['prodID']; ?>" class="delete-btn"
-                              onclick="return confirm('Are you sure you want to delete this product?');"><i
-                                 class="fas fa-trash"></i> Delete</a>
-                           <a href="javascript:void(0);" class="option-btn"
-                              onclick="showUpdateForm(<?php echo $row['prodID']; ?>)"><i class="fas fa-edit"></i> Update</a>
-                        </td>
-                     </tr>
-                     <?php
+         <div class="table-container">
+            <table>
+               <thead>
+                  <th>Product image</th>
+                  <th>Product name</th>
+                  <th>Product price</th>
+                  <th>Product description</th>
+                  <th>Product category</th>
+                  <th>Action</th>
+               </thead>
+               <tbody>
+                  <?php
+                  $select_products = mysqli_query($conn, "SELECT * FROM `products`");
+                  if (mysqli_num_rows($select_products) > 0) {
+                     while ($row = mysqli_fetch_assoc($select_products)) {
+                        ?>
+                        <tr>
+                           <!-- Display product table data -->
+                           <td><img src="uploaded_img/<?php echo $row['image']; ?>" height="100" alt=""></td>
+                           <td>
+                              <?php echo $row['name']; ?>
+                           </td>
+                           <td>₱
+                              <?php echo $row['price']; ?>
+                           </td>
+                           <td>
+                              <?php echo $row['description']; ?>
+                           </td>
+                           <td>
+                              <?php echo $row['category']; ?>
+                           </td>
+                           <td>
+                              <a href="add-product.php?delete=<?php echo $row['prodID']; ?>" class="delete-btn"
+                                 onclick="return confirm('Are you sure you want to delete this product?');"><i
+                                    class="fas fa-trash"></i> Delete</a>
+                              <a href="javascript:void(0);" class="option-btn"
+                                 onclick="showUpdateForm(<?php echo $row['prodID']; ?>)"><i class="fas fa-edit"></i>
+                                 Update</a>
+                           </td>
+                        </tr>
+                        <?php
+                     }
+                  } else {
+                     echo "<div class='empty'>No product added</div>";
                   }
-               } else {
-                  echo "<div class='empty'>No product added</div>";
-               }
-               ?>
-            </tbody>
-         </table>
+                  ?>
+               </tbody>
+            </table>
       </section>
       <section class="edit-form-container" style="display: none;">
          <div class="close-btn" onclick="hideUpdateForm()"> <i class="fas fa-times fa-2x"></i></i></div>
@@ -208,7 +220,8 @@ if (isset($_POST['add_product'])) {
             <input type="file" class="box" required name="update_p_image" accept="image/png, image/jpg, image/jpeg">
             <input type="submit" value="Update product" name="update_product" class="btn">
             <!-- Add the "Go Back" button -->
-            <a href="add-product.php" class="btn">Go Back</a>
+            <a href="add-product.php" class="btn btn-cancel">Cancel</a>
+
          </form>
       </section>
 

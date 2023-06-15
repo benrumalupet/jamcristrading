@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <!-- Coding By CodingNepal - codingnepalweb.com -->
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- ===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
@@ -29,10 +30,24 @@
             background-color: #4070f4;
         }
 
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .logo-container img {
+            margin-top: 60px;
+            max-width: 200px;
+            max-height: 200px;
+        }
+
         .container {
             position: relative;
-            max-width: 430px;
+            max-width: 500px;
+            max-height: 500px;
             width: 100%;
+            height: 100%;
             background: #fff;
             border-radius: 10px;
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
@@ -198,18 +213,23 @@
     </style>
     <title>Admin Login</title>
 </head>
+
 <body>
     <div class="container">
         <div class="forms">
             <div class="form login">
-                <span class="title">Login</span>
+                <div class="logo-container">
+                    <img src="about/logo.png" alt="Karpul Logo">
+                </div>
+                <!-- <span class="title">Login</span> -->
                 <form action="admin-login.php" method="POST">
                     <div class="input-field">
                         <input type="text" name="identifier" placeholder="Enter your Username or Email" required>
                         <i class="uil uil-envelope icon"></i>
                     </div>
                     <div class="input-field">
-                        <input type="password" name="password" class="password" placeholder="Enter your password" required>
+                        <input type="password" name="password" class="password" placeholder="Enter your password"
+                            required>
                         <i class="uil uil-lock icon"></i>
                         <i class="uil uil-eye-slash showHidePw"></i>
                     </div>
@@ -232,8 +252,9 @@
 
     <!-- Add back button -->
     <a href="index.php" style="position: absolute; top: 20px; left: 20px; text-decoration: none; color: #fff;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="height: 24px; width: 24px; vertical-align: middle;">
-            <path d="M15 18l-6-6 6-6"/>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" style="height: 24px; width: 24px; vertical-align: middle;">
+            <path d="M15 18l-6-6 6-6" />
         </svg>
         Back
     </a>
@@ -275,4 +296,5 @@
         });
     </script>
 </body>
+
 </html>

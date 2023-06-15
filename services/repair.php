@@ -17,16 +17,16 @@
     background: #aad5f6;
 }
 .slide-1 {
-    background: url('../product-img/import1.jpg');
+    background: url('../product-img/repair1.jpg');
 }
 .slide-2 {
     background: url('../product-img/repair2.jpg');
 }
 .slide-3 {
-    background: url('../product-img/repair3.jpg');
+    background: url('../img/celerio.jpg');
 }
 .slide-4 {
-    background: url('../product-img/repair4.jpg');
+    background: url('../img/fixed.jpg');
 }
 
 .slide {
@@ -85,7 +85,7 @@
     </style>
 </head>
 <?php
-include '../sample-nav-2.html';
+include '../sample-nav.html';
 ?>
 <body>
     <div class="container">
@@ -105,14 +105,14 @@ include '../sample-nav-2.html';
        </div>
        <div class="slide slide-3">
             <div class="caption">
-            <h3>Car Repair and Body Works</h3>
-                <p>Thank you, Bahar Dar!</p>
+            <h3>Car Repair and Body Works <br>(Before)</h3>
+                <p></p>
             </div>
             
        </div>
        <div class="slide slide-4">
              <div class="caption">
-                 <h3>Car Repair and Body Works</h3>
+                 <h3>Car Repair and Body Works<br>(After)</h3>
              </div>
         </div>
        <div class="arrow r" onclick="next()">

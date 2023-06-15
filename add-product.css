@@ -304,7 +304,8 @@ section{
 }
 
 .products .box-container .box img{
-   height: 25rem;
+   width: 250px !important;
+   
 }
 
 .products .box-container .box h3{

@@ -1,24 +1,6 @@
 <?php
 require_once 'connection.php';
 
-function filterProducts($category, $allProducts)
-{
-   if ($category === "all") {
-      return $allProducts;
-   } else {
-      return array_filter($allProducts, function ($product) use ($category) {
-         return $product['category'] === $category;
-      });
-   }
-}
-
-function searchProducts($keyword, $allProducts)
-{
-   return array_filter($allProducts, function ($product) use ($keyword) {
-      return strpos(strtolower($product['name']), strtolower($keyword)) !== false || strpos(strtolower($product['category']), strtolower($keyword)) !== false;
-   });
-}
-
 // Fetch all products
 $conn = openConnection();
 $query = "SELECT * FROM products";
@@ -31,21 +13,6 @@ closeConnection($conn);
 $products = $allProducts;
 $filteredProducts = $allProducts; // Store the filtered products separately
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-   if (isset($_POST['search'])) {
-      $keyword = $_POST['search'];
-      $filteredProducts = searchProducts($keyword, $allProducts);
-   } else {
-      $filteredProducts = $allProducts;
-   }
-
-   if (isset($_POST['filter'])) {
-      $category = $_POST['filter'];
-      $products = filterProducts($category, $filteredProducts);
-   } else {
-      $products = $filteredProducts;
-   }
-}
 ?>
 
 <!DOCTYPE html>
@@ -61,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    <!-- font awesome cdn link -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css">
-
+   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
    <!-- custom css file link -->
    <!-- <link rel="stylesheet" href="add-product.css"> -->
    <link rel="stylesheet" href="product.css">
@@ -104,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       }
 
       .card-body {
-         height: 200px;
+         height: 210px;
          /* Set a fixed height for the card body */
          overflow: hidden;
       }
@@ -132,6 +99,63 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       #searchInput {
          width: 100%;
       }
+
+      #searchCategory {
+         appearance: none;
+         -webkit-appearance: none;
+         -moz-appearance: none;
+         background-color: aliceblue;
+         border: 1px solid #ccc;
+         padding: 8px;
+         width: 100%;
+         font-size: 14px;
+         color: black;
+      }
+
+      #searchCategory:focus {
+         outline: none;
+         border-color: black;
+      }
+
+      /* Customize the arrow icon */
+      #searchCategory::-ms-expand {
+         display: none;
+      }
+
+      #searchCategory::after {
+         content: '\25BC';
+         position: absolute;
+         top: 50%;
+         right: 12px;
+         transform: translateY(-50%);
+         pointer-events: none;
+         color: aliceblue;
+      }
+
+      .custom-select {
+         position: relative;
+         margin-right: 200px;
+      }
+
+      .custom-select::after {
+         content: "";
+         position: absolute;
+         top: 50%;
+         right: 12px;
+         transform: translateY(-50%);
+         width: 0;
+         height: 0;
+         border-style: solid;
+         border-width: 6px 6px 0 6px;
+         border-color: #000 transparent transparent transparent;
+      }
+
+      .custom-select select {
+         appearance: none;
+         -webkit-appearance: none;
+         -moz-appearance: none;
+         padding-right: 24px;
+      }
    </style>
 </head>
 
@@ -147,57 +171,69 @@ include 'sample-nav.html';
       }
    }
    ?>
-   <br><br><br>
+
    <div class="container">
+      <br><br><br>
+      <h1 class="text-center mt-5 display-3 fw-bold">Our <span class="theme-text">Products</span></h1>
+      <hr class="mx-auto mb-5 w-25">
 
-      <section class="products">
-         <h1 class="text-center mt-5 display-3 fw-bold">Our <span class="theme-text">Products</span></h1>
-         <hr class="mx-auto mb-5 w-25">
 
-         <div class="box-container">
-            <div class="row mt-5 justify-content-center" id="search-bar">
-               <div class="col-6">
-                  <input type="text" id="searchInput" class="form-control" placeholder="Search by name or category">
-               </div>
-               <div class="col-3">
-                  <button class="btn btn-primary w-100" onclick="performSearch()">Search</button>
-               </div>
-            </div>
-            <div class="row mt-5" id="filter-buttons">
-               <div class="col-12">
-                  <button class="btn mb-2 me-1 active" data-filter="all">Show all</button>
-                  <button class="btn mb-2 mx-1" data-filter="Exterior">Exterior</button>
-                  <button class="btn mb-2 mx-1" data-filter="Interior">Interior</button>
-                  <button class="btn mb-2 mx-1" data-filter="Mechanical Parts">Mechanical Parts</button>
-                  <button class="btn mb-2 mx-1" data-filter="Tires">Tires</button>
-                  <button class="btn mb-2 mx-1" data-filter="Car Doors">Car Doors</button>
-                  <button class="btn mb-2 mx-1" data-filter="Car Fender">Car Fender</button>
-                  <button class="btn mb-2 mx-1" data-filter="Car Seats">Car Seats</button>
-                  <button class="btn mb-2 mx-1" data-filter="Car Mats">Car Mats</button>
-                  <button class="btn mb-2 mx-1" data-filter="Car Lights">Car Lights</button>
-                  <button class="btn mb-2 mx-1" data-filter="Motorcycles">Motorcycles</button>
-               </div>
-            </div>
-            <div class="row px-2 mt-4 gap-3" id="filterable-cards">
-               <?php
-               foreach ($products as $product) {
-                  echo '
-                     <div class="col">
-                        <div class="card p-0" data-name="' . $product['category'] . '" onclick="showPreview(this)">
-                           <img src="uploaded_img/' . $product['image'] . '" alt="img">
-                           <div class="card-body">
-                              <h6 class="card-title">' . $product['name'] . '</h6>
-                              <p class="card-text">Description: ' . $product['description'] . '</p>
-                              <p class="card-text">Price: ₱' . $product['price'] . '</p>
-                              <p class="card-text preview-link">(Click to preview image)</p>
-                           </div>
-                        </div>
-                     </div>';
-               }
-               ?>
+
+      <div class="box-container">
+         <div class="row mt-5 justify-content-center" id="search-bar">
+            <div class="col-6">
+               <input type="text" id="searchInput" class="form-control" placeholder="Search by Name/Categories 🔍"
+                  oninput="performSearch()">
             </div>
          </div>
-      </section>
+         <br><br>
+
+         <div class="col-6">
+            <div class="dropdown custom-select">
+               <select name="searchCategory" id="searchCategory" class="form-control" onchange="performSearch()">
+                  <option value="" disabled selected>Categories Filter</option>
+                  <option value="Show All">Show All</option>
+                  <option value="Exterior">Exterior</option>
+                  <option value="Interior">Interior</option>
+                  <option value="Mechanical Parts">Mechanical Parts</option>
+                  <option value="Tires">Tires</option>
+                  <option value="Car Doors">Car Doors</option>
+                  <option value="Car Fender">Car Fender</option>
+                  <option value="Car Seats">Car Seats</option>
+                  <option value="Car Mats">Car Mats</option>
+                  <option value="Car Lights">Car Lights</option>
+                  <option value="Motorcycles">Motorcycles</option>
+               </select>
+            </div>
+         </div>
+<br >
+
+
+      </div>
+
+
+      <div class="row px-3 mt-2 gap-3" id="filterable-cards">
+         <?php
+         foreach ($filteredProducts as $product) {
+            echo '
+         <div class="col">
+            <div class="card p-0" data-name="' . $product['category'] . '" onclick="showPreview(this)">
+               <img src="uploaded_img/' . $product['image'] . '" alt="img">
+               <div class="card-body">
+                  <h6 class="card-title">' . $product['name'] . '</h6>
+                  <p class="card-text">Description: ' . $product['description'] . '</p>
+                  <p class="card-text">Price: ₱' . $product['price'] . '</p>
+                  <p class="card-text preview-link">(Click to preview image)</p>
+               </div>
+            </div>
+            <br>
+         </div>';
+         }
+         ?>
+      </div>
+
+   </div>
+   </section>
    </div>
    <br>
 
@@ -209,49 +245,30 @@ include 'sample-nav.html';
 
    <!-- custom js file link -->
    <script>
+      // Function to perform search
       function performSearch() {
-         const searchInput = document.getElementById("searchInput");
-         const keyword = searchInput.value.trim();
+         const searchInput = document.getElementById("searchInput").value.toUpperCase();
+         const searchCategory = document.getElementById("searchCategory").value.toUpperCase();
+         const filterableCards = document.getElementById("filterable-cards");
+         const cards = filterableCards.getElementsByClassName("col");
 
-         if (keyword !== "") {
-            const form = document.createElement("form");
-            form.method = "post";
-            form.style.display = "none";
-            const input = document.createElement("input");
-            input.type = "hidden";
-            input.name = "search";
-            input.value = keyword;
-            form.appendChild(input);
-            document.body.appendChild(form);
-            form.submit();
+         for (let i = 0; i < cards.length; i++) {
+            const card = cards[i];
+            const categoryName = card.querySelector(".card").getAttribute("data-name").toUpperCase();
+            const cardTitle = card.querySelector(".card-title").textContent.toUpperCase();
+
+            if (searchCategory === "SHOW ALL" || categoryName.includes(searchCategory)) {
+               if (cardTitle.includes(searchInput)) {
+                  card.style.display = "";
+               } else {
+                  card.style.display = "none";
+               }
+            } else {
+               card.style.display = "none";
+            }
          }
       }
 
-      const filterButtons = document.querySelectorAll("#filter-buttons button");
-      const filterableCards = document.querySelectorAll("#filterable-cards .card");
-
-      // Filter cards based on button click
-      filterButtons.forEach(button => {
-         button.addEventListener("click", () => {
-            filterButtons.forEach(btn => btn.classList.remove("active"));
-            button.classList.add("active");
-
-            const filterValue = button.getAttribute("data-filter");
-
-            filterableCards.forEach(card => {
-               if (filterValue === "all") {
-                  card.style.display = "block";
-               } else {
-                  const cardName = card.getAttribute("data-name");
-                  if (cardName === filterValue) {
-                     card.style.display = "block";
-                  } else {
-                     card.style.display = "none";
-                  }
-               }
-            });
-         });
-      });
 
       // Show image preview
       function showPreview(card) {
